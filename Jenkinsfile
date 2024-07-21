@@ -56,7 +56,7 @@ pipeline {
             }
         }
 
-        stage('docker build'){
+        stage('Deploy'){
             steps{
                 sh """
                      cd helm
