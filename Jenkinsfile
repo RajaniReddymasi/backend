@@ -56,6 +56,17 @@ pipeline {
             }
         }
 
+        stage('docker build'){
+            steps{
+                sh """
+                     cd helm
+                     sed -i 's/IMAGE_VERSION/${appVersion}/g' values.yaml
+                     helm install backend .
+                """
+            }
+        }
+
+
        /*  stage('Sonar Scan'){
             environment {
                 scannerHome = tool 'sonar-6.0' //referring scanner CLI
